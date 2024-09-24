@@ -1,4 +1,4 @@
 {
 	"name": "GameAssembly.Core",
-	"references":[ "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:eae77c14a3a627d4bba05e6d5348cf44", "GUID:78094d88480b41038da72032ea6ac740" ]
+	"references":[ "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:eae77c14a3a627d4bba05e6d5348cf44", "GUID:78094d88480b41038da72032ea6ac740", "GUID:444b9b206521cdf4eb47d2dd63b3b22c" ]
 }

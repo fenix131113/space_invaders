@@ -1,3 +1,4 @@
 {
-	"name": "GameAssembly.PlayerSystem"
+	"name": "GameAssembly.PlayerSystem",
+	"references":[ "GUID:444b9b206521cdf4eb47d2dd63b3b22c", "GUID:78094d88480b41038da72032ea6ac740" ]
 }

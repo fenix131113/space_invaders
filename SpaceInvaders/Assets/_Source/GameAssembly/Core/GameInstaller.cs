@@ -2,6 +2,7 @@ using EnemySystem;
 using EnemySystem.Data;
 using PlayerSystem;
 using PlayerSystem.Data;
+using ShootingSystem;
 using UnityEngine;
 using Zenject;
 using PlayerInputHandler = PlayerSystem.PlayerInputHandler;
@@ -11,6 +12,7 @@ namespace Core
 	public class GameInstaller : MonoInstaller
 	{
 		[SerializeField] private PlayerMovement playerMovement;
+		[SerializeField] private AShooter playerShooter;
 
 		[SerializeField] private PlayerSettings playerSettings;
 		[SerializeField] private EnemySpawnSettings enemySpawnSettings;
@@ -42,6 +44,11 @@ namespace Core
 
 			Container.Bind<PlayerMovement>()
 				.FromInstance(playerMovement)
+				.AsSingle()
+				.NonLazy();
+
+			Container.Bind<AShooter>()
+				.FromInstance(playerShooter)
 				.AsSingle()
 				.NonLazy();
 		}

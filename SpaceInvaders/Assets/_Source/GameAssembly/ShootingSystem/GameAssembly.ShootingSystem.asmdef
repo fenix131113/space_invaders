@@ -1,0 +1,14 @@
+{
+    "name": "GameAssembly.ShootingSystem",
+    "rootNamespace": "",
+    "references": ["GUID:fe9933e25cf8d7145b27afa1043e5986"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
