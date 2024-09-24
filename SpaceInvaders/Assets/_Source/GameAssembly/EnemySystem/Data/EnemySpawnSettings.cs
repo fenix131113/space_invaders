@@ -9,6 +9,7 @@ namespace EnemySystem.Data
 		[field: SerializeField] public int Raws { get; private set; }
 		[field: SerializeField] public float XSpacing { get; private set; }
 		[field: SerializeField] public float YSpacing { get; private set; }
-		[field: SerializeField] public GameObject EnemyPrefab { get; private set; }
+		[field: SerializeField] public Enemy EnemyPrefab { get; private set; }
+		[field: SerializeField] public GameObject EnemyBulletPrefab { get; private set; }
 	}
 }

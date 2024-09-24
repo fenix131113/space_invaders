@@ -1,7 +1,7 @@
 {
     "name": "GameAssembly.EnemySystem",
     "rootNamespace": "",
-    "references": [],
+    "references": ["GUID:444b9b206521cdf4eb47d2dd63b3b22c"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

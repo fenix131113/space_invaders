@@ -139,6 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8146128038919812779}
+  - component: {fileID: 7399770861114150590}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -164,6 +165,21 @@ Transform:
   - {fileID: 4154246884173517045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7399770861114150590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715122408903207618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655333fa4d0c4f99b2d4ea5920a5b265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyingParticles: {fileID: 4959203261773209280}
+  ammoPrefab: {fileID: 1046391914183891633, guid: 994bb07efa38eba4d81e037171d374f6, type: 3}
+  maxHealth: 1
 --- !u!1 &6906462358245537448
 GameObject:
   m_ObjectHideFlags: 0

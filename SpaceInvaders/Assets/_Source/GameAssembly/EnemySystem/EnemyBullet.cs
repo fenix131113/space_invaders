@@ -1,27 +1,27 @@
 ﻿using ShootingSystem;
 using UnityEngine;
 
-namespace PlayerSystem
+namespace EnemySystem
 {
-	public class PlayerBullet : ABullet
+	public class EnemyBullet : ABullet
 	{
 		[SerializeField] private float speed;
-
+		
 		private void Update()
 		{
-			transform.position += transform.up * (speed * Time.deltaTime);
+			transform.position -= transform.up * (speed * Time.deltaTime);
 
-			if (transform.position.y > Camera.main!.ViewportToWorldPoint(new Vector2(0, 1)).y)
+			if (transform.position.y < Camera.main!.ViewportToWorldPoint(new Vector2(0, 0)).y)
 				gameObject.SetActive(false);
 		}
-
+		
 		protected override void OnTargetEntered(Collider2D target)
 		{
-			if (target.TryGetComponent(out IHealth health))
+			if(target.TryGetComponent(out IHealth health))
 				health.DecreaseHealth();
 			else
 				Debug.LogWarning($"Can't find IHealth component. Check {target.name} object!");
-
+			
 			gameObject.SetActive(false);
 		}
 	}

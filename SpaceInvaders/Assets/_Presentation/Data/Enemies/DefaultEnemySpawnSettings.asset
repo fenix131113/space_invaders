@@ -16,4 +16,5 @@ MonoBehaviour:
   <Raws>k__BackingField: 5
   <XSpacing>k__BackingField: 0.2
   <YSpacing>k__BackingField: -0.2
-  <EnemyPrefab>k__BackingField: {fileID: 6715122408903207618, guid: 65668353f8eddd447a13a3e560604429, type: 3}
+  <EnemyPrefab>k__BackingField: {fileID: 7399770861114150590, guid: 65668353f8eddd447a13a3e560604429, type: 3}
+  <EnemyBulletPrefab>k__BackingField: {fileID: 1046391914183891633, guid: 994bb07efa38eba4d81e037171d374f6, type: 3}
