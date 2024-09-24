@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f753f5bb54484cbf81a1d07e26cb3d1f, type: 3}
+  m_Name: DefaultEnemySpawnSettings
+  m_EditorClassIdentifier: 
+  <Columns>k__BackingField: 9
+  <Raws>k__BackingField: 5
+  <XSpacing>k__BackingField: 0.2
+  <YSpacing>k__BackingField: -0.2
+  <EnemyPrefab>k__BackingField: {fileID: 1922437572086698902, guid: 65668353f8eddd447a13a3e560604429, type: 3}
