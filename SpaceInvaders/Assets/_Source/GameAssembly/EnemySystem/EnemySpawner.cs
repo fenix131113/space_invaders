@@ -11,14 +11,14 @@ namespace EnemySystem
 	{
 		[SerializeField] private Transform spawnParent;
 
-		public List<List<Enemy>> EnemyRaws { get; private set; } = new();
+		public List<List<Enemy>> EnemyColumns { get; private set; } = new();
 		public int EnemyLeft { get; private set; }
 
 		private EnemySpawnSettings _spawnerSettings;
 		private PlayerScore _playerScore;
 		private Vector3 _startPosition;
 
-		public event Action OnEnemyCountChanged; 
+		public event Action OnEnemyCountChanged;
 
 		[Inject]
 		public void Construct(EnemySpawnSettings spawnerSettings, PlayerScore playerScore)
@@ -31,7 +31,7 @@ namespace EnemySystem
 		{
 			Spawn();
 		}
-		
+
 
 		private void Spawn()
 		{
@@ -39,24 +39,27 @@ namespace EnemySystem
 			Vector2 spawnPosition = _startPosition;
 			for (var i = 1; i < _spawnerSettings.Raws + 1; i++)
 			{
-				if (EnemyRaws.Count < i)
-					EnemyRaws.Add(new List<Enemy>());
-				
 				for (var j = 1; j < _spawnerSettings.Columns + 1; j++)
 				{
-					EnemyRaws[i - 1].Add(Instantiate(_spawnerSettings.EnemyPrefab, spawnPosition, Quaternion.identity,
+					if (EnemyColumns.Count < j)
+						EnemyColumns.Add(new List<Enemy>());
+
+					EnemyColumns[j - 1].Add(Instantiate(_spawnerSettings.EnemyPrefab, spawnPosition,
+						Quaternion.identity,
 						spawnParent));
-					EnemyRaws[i - 1][^1].Init(_playerScore);
-					EnemyRaws[i - 1][^1].OnDeath += DecreaseEnemies;
+
+					EnemyColumns[j - 1][^1].Init(_playerScore);
+					EnemyColumns[j - 1][^1].OnDeath += DecreaseEnemies;
 					EnemyLeft++;
+
 					spawnPosition.x += _spawnerSettings.EnemyPrefab.transform.localScale.x + _spawnerSettings.XSpacing;
 				}
 
 				spawnPosition.x = _startPosition.x;
 				spawnPosition.y -= _spawnerSettings.EnemyPrefab.transform.localScale.y + _spawnerSettings.YSpacing;
 			}
-			
-			EnemyRaws.Reverse();
+
+			EnemyColumns.Reverse();
 		}
 
 		private void CalculateStartPosition()
@@ -76,7 +79,7 @@ namespace EnemySystem
 		private void DecreaseEnemies()
 		{
 			EnemyLeft--;
-			
+
 			OnEnemyCountChanged?.Invoke();
 		}
 	}

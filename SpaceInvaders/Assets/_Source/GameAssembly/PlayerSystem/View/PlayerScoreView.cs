@@ -20,6 +20,7 @@ namespace PlayerSystem.View
 		private void RefreshVisual()
 		{
 			scoreText.text = $"Score\n{_playerScore.Score}";
+			highScoreText.text = $"High Score\n{_playerScore.HighScore}";
 		}
 		
 		private void Awake()

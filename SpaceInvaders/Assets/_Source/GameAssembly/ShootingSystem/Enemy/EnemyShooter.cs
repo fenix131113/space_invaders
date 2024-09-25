@@ -43,22 +43,18 @@ namespace ShootingSystem.Enemy
 			if (_bullet.activeSelf)
 				return;
 
-			List<EnemySystem.Enemy> selectedRaw = new();
+			List<List<EnemySystem.Enemy>> selectedColumns;
 
-			foreach (var raw in _enemySpawner.EnemyRaws)
-			{
-				if (raw.All(enemy => !enemy.EnemyGFX.activeSelf))
-					continue;
+			selectedColumns = _enemySpawner.EnemyColumns.Where(column => column.Any(enemy => enemy.EnemyGFX.activeSelf))
+				.ToList();
 
-				selectedRaw = raw;
-				selectedRaw = selectedRaw.Where(enemy => enemy.EnemyGFX.activeSelf).ToList();
-				break;
-			}
-
-			if(selectedRaw.Count == 0)
+			if (selectedColumns.Count == 0)
 				return;
+
+			_bullet.transform.position =
+				selectedColumns[Random.Range(0, selectedColumns.Count)].Where(enemy => enemy.EnemyGFX.activeSelf)
+					.ToList()[^1].ShootPoint.position;
 			
-			_bullet.transform.position = selectedRaw[Random.Range(0, selectedRaw.Count)].ShootPoint.position;
 			_bullet.SetActive(true);
 		}
 
