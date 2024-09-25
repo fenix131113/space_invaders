@@ -1446,6 +1446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  downMoveInterval: 5
+  downMoveLenght: 0.3
 --- !u!1 &1582880612
 GameObject:
   m_ObjectHideFlags: 0
