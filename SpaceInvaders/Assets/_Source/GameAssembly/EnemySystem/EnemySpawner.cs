@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using EnemySystem.Data;
 using PlayerSystem;
@@ -11,10 +12,13 @@ namespace EnemySystem
 		[SerializeField] private Transform spawnParent;
 
 		public List<List<Enemy>> EnemyRaws { get; private set; } = new();
+		public int EnemyLeft { get; private set; }
 
 		private EnemySpawnSettings _spawnerSettings;
 		private PlayerScore _playerScore;
 		private Vector3 _startPosition;
+
+		public event Action OnEnemyCountChanged; 
 
 		[Inject]
 		public void Construct(EnemySpawnSettings spawnerSettings, PlayerScore playerScore)
@@ -43,6 +47,8 @@ namespace EnemySystem
 					EnemyRaws[i - 1].Add(Instantiate(_spawnerSettings.EnemyPrefab, spawnPosition, Quaternion.identity,
 						spawnParent));
 					EnemyRaws[i - 1][^1].Init(_playerScore);
+					EnemyRaws[i - 1][^1].OnDeath += DecreaseEnemies;
+					EnemyLeft++;
 					spawnPosition.x += _spawnerSettings.EnemyPrefab.transform.localScale.x + _spawnerSettings.XSpacing;
 				}
 
@@ -65,6 +71,13 @@ namespace EnemySystem
 					                                           _spawnerSettings.YSpacing));
 
 			_startPosition = centerPosition + topLeftPosition;
+		}
+
+		private void DecreaseEnemies()
+		{
+			EnemyLeft--;
+			
+			OnEnemyCountChanged?.Invoke();
 		}
 	}
 }

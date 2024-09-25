@@ -1,4 +1,5 @@
-﻿using HealthSystem;
+﻿using System;
+using HealthSystem;
 using PlayerSystem;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace EnemySystem
 		[SerializeField] private ParticleSystem destroyingParticles;
 		[SerializeField] private int maxHealth;
 		
+		public event Action OnDeath;
+		
 		public int Health { get; private set; }
 
 		private PlayerScore _playerScore;
@@ -27,11 +30,13 @@ namespace EnemySystem
 
 		private void Die()
 		{
+			OnDeath?.Invoke();
 			destroyingParticles.Play();
 
 			_playerScore.AddScore((uint)scoreByDeath);
 			
 			currentCollider.enabled = false;
+			OnDeath = null;
 			EnemyGFX.SetActive(false);
 		}
 

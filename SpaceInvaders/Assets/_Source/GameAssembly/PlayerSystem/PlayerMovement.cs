@@ -9,15 +9,20 @@ namespace PlayerSystem
         [SerializeField] private Transform playerTransform;
 
         private PlayerSettings _playerSettings;
+        private PlayerHealth _playerHealth;
 
         [Inject]
-        private void Construct(PlayerSettings playerSettings)
+        private void Construct(PlayerSettings playerSettings, PlayerHealth playerHealth)
         {
             _playerSettings = playerSettings;
+            _playerHealth = playerHealth;
         }
         
         public void MovePlayer(Vector2 movement)
         {
+            if(_playerHealth.IsDead)
+                return;
+            
             playerTransform.position += (Vector3)movement * (_playerSettings.Speed * Time.deltaTime);
 
             var minX = Camera.main!.ScreenToWorldPoint(new Vector2(0, 0)).x;
