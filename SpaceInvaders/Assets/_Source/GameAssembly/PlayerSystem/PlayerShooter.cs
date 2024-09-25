@@ -7,7 +7,7 @@ namespace PlayerSystem
 	{
 		[SerializeField] private Transform shootPoint;
 		
-		private GameObject _bullet;
+		private PlayerBullet _bullet;
 
 		private void Awake()
 		{
@@ -16,17 +16,17 @@ namespace PlayerSystem
 
 		private void Init()
 		{
-			_bullet = Instantiate(bulletPrefab);
-			_bullet.SetActive(false);
+			_bullet = Instantiate(bulletPrefab as PlayerBullet);
+			_bullet.gameObject.SetActive(false);
 		}
 
 		public override void Shoot()
 		{
-			if(_bullet.activeSelf)
+			if(_bullet.gameObject.activeSelf)
 				return;
 
 			_bullet.transform.position = shootPoint.position;
-			_bullet.SetActive(true);
+			_bullet.ActivateBullet();
 		}
 	}
 }

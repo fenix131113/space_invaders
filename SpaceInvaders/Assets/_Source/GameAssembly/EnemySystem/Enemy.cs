@@ -5,23 +5,16 @@ namespace EnemySystem
 {
 	public class Enemy : MonoBehaviour, IHealth
 	{
-		//[field: SerializeField] public En
-		
+		[field: SerializeField] public Transform ShootPoint { get; private set; }
+		[field: SerializeField] public GameObject EnemyGFX { get; private set; }
+
+		[SerializeField] private Collider2D currentCollider;
 		[SerializeField] private ParticleSystem destroyingParticles;
 		[SerializeField] private int maxHealth;
-		
-		private int _health;
-		private GameObject _bullet;
 
-		public void Init(GameObject bullet)
-		{
-			if(_bullet)
-				return;
-			
-			_bullet = bullet;
-		}
-		
-		private void OnValidate()
+		private int _health;
+
+		public void Start()
 		{
 			_health = maxHealth;
 		}
@@ -29,15 +22,16 @@ namespace EnemySystem
 		private void Die()
 		{
 			destroyingParticles.Play();
-			
-			gameObject.SetActive(false);
+
+			currentCollider.enabled = false;
+			EnemyGFX.SetActive(false);
 		}
 
 		public void DecreaseHealth(int amount = 1)
 		{
 			_health = Mathf.Clamp(_health - amount, 0, maxHealth);
-			
-			if(_health == 0)
+
+			if (_health == 0)
 				Die();
 		}
 	}

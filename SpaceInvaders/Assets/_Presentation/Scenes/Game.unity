@@ -1036,6 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 483826673}
   playerShooter: {fileID: 483826675}
+  enemySpawner: {fileID: 1593777974}
   playerSettings: {fileID: 11400000, guid: eccf4773a8b20a74da32f87ec067a66b, type: 2}
   enemySpawnSettings: {fileID: 11400000, guid: 90e93e1b226f1d444b8d37e1696e688e, type: 2}
 --- !u!1 &1562591635
@@ -1193,6 +1194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593777973}
   - component: {fileID: 1593777974}
+  - component: {fileID: 1593777975}
   m_Layer: 0
   m_Name: ----GENERAL----
   m_TagString: Untagged
@@ -1230,6 +1232,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 1567411625}
+--- !u!114 &1593777975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593777972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab4a4257fb947bc98391a0cdc255630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1046391914183891633, guid: 994bb07efa38eba4d81e037171d374f6, type: 3}
+  minTimeBetweenShots: 1
+  maxTimeBetweenShots: 2
 --- !u!1 &1888946437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1290,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1888946438}
     m_Modifications:
+    - target: {fileID: 3516057268429247087, guid: ae6ae893bb0ff73438a62eb560c05310, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4451234147487120637, guid: fef2eaf547202974a907366a19c3e51a, type: 3}
     - target: {fileID: 4771939067324693634, guid: ae6ae893bb0ff73438a62eb560c05310, type: 3}
       propertyPath: m_Name
       value: Player

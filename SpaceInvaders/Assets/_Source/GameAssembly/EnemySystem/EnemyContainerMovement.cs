@@ -1,5 +1,4 @@
-﻿using System;
-using EnemySystem.Data;
+﻿using EnemySystem.Data;
 using UnityEngine;
 using Zenject;
 

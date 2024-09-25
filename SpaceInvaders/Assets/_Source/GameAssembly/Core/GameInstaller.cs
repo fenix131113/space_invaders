@@ -13,6 +13,7 @@ namespace Core
 	{
 		[SerializeField] private PlayerMovement playerMovement;
 		[SerializeField] private AShooter playerShooter;
+		[SerializeField] private EnemySpawner enemySpawner;
 
 		[SerializeField] private PlayerSettings playerSettings;
 		[SerializeField] private EnemySpawnSettings enemySpawnSettings;
@@ -27,6 +28,11 @@ namespace Core
 		{
 			Container.Bind<EnemySpawnSettings>()
 				.FromInstance(enemySpawnSettings)
+				.AsSingle()
+				.NonLazy();
+
+			Container.Bind<EnemySpawner>()
+				.FromInstance(enemySpawner)
 				.AsSingle()
 				.NonLazy();
 		}

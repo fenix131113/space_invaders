@@ -7,6 +7,8 @@ namespace PlayerSystem
 	{
 		[SerializeField] private float speed;
 
+		private bool _canHit = true;
+
 		private void Update()
 		{
 			transform.position += transform.up * (speed * Time.deltaTime);
@@ -15,8 +17,19 @@ namespace PlayerSystem
 				gameObject.SetActive(false);
 		}
 
+		public void ActivateBullet()
+		{
+			gameObject.SetActive(true);
+			_canHit = true;
+		}
+
 		protected override void OnTargetEntered(Collider2D target)
 		{
+			if (!_canHit)
+				return;
+			
+			_canHit = false;
+			
 			if (target.TryGetComponent(out IHealth health))
 				health.DecreaseHealth();
 			else

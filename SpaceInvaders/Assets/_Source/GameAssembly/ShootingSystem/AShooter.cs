@@ -4,7 +4,7 @@ namespace ShootingSystem
 {
 	public abstract class AShooter : MonoBehaviour
 	{
-		[SerializeField] protected GameObject bulletPrefab;
+		[SerializeField] protected ABullet bulletPrefab;
 		
 		public abstract void Shoot();
 	}
