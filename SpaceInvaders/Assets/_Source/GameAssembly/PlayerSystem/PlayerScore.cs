@@ -39,6 +39,8 @@ namespace PlayerSystem
 		{
 			if (PlayerPrefs.HasKey("HighScore"))
 				HighScore = PlayerPrefs.GetInt("HighScore");
+			
+			OnScoreChanged?.Invoke();
 		}
 	}
 }

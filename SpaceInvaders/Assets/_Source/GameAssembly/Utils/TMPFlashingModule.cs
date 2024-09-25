@@ -20,7 +20,7 @@ namespace Utils
 
 		private TMP_Text _target;
 
-		private void OnValidate()
+		private void Awake()
 		{
 			_target = GetComponent<TMP_Text>();
 		}
