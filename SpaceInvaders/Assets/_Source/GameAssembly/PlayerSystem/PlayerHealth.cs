@@ -14,6 +14,9 @@ namespace PlayerSystem
 
 		public void DecreaseHealth(int amount = 1)
 		{
+			if(Health == 0)
+				return;
+			
 			Health = Mathf.Clamp(Health - amount, 0, 3);
 
 			OnHealthChanged?.Invoke();

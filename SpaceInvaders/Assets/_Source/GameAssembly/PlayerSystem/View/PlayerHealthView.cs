@@ -9,7 +9,7 @@ namespace PlayerSystem.View
 		[SerializeField] private TMPFlashingModule module;
 
 		private PlayerHealth _playerHealth;
-		
+
 		[Inject]
 		private void Construct(PlayerHealth playerHealth)
 		{
@@ -24,8 +24,10 @@ namespace PlayerSystem.View
 		private void RefreshVisual()
 		{
 			if (_playerHealth.Health >= module.SpriteAssetTags.Count) return;
+
+			while (module.SpriteAssetTags.Count > _playerHealth.Health)
+				module.SpriteAssetTags.Remove(module.SpriteAssetTags[^1]);
 			
-			module.SpriteAssetTags.Remove(module.SpriteAssetTags[^1]);
 			module.RefreshText();
 		}
 
@@ -38,7 +40,7 @@ namespace PlayerSystem.View
 		{
 			_playerHealth.OnHealthChanged -= RefreshVisual;
 		}
-		
+
 		private void OnDestroy() => Expose();
 
 		private void OnApplicationQuit() => Expose();

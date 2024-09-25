@@ -16,15 +16,17 @@ namespace EnemySystem
 
 		private EnemySpawnSettings _spawnerSettings;
 		private PlayerScore _playerScore;
+		private PlayerHealth _playerHealth;
 		private Vector3 _startPosition;
 
 		public event Action OnEnemyCountChanged;
 
 		[Inject]
-		public void Construct(EnemySpawnSettings spawnerSettings, PlayerScore playerScore)
+		public void Construct(EnemySpawnSettings spawnerSettings, PlayerScore playerScore, PlayerHealth playerHealth)
 		{
 			_spawnerSettings = spawnerSettings;
 			_playerScore = playerScore;
+			_playerHealth = playerHealth;
 		}
 
 		public void Awake()
@@ -48,7 +50,7 @@ namespace EnemySystem
 						Quaternion.identity,
 						spawnParent));
 
-					EnemyColumns[j - 1][^1].Init(_playerScore);
+					EnemyColumns[j - 1][^1].Init(_playerScore, _playerHealth);
 					EnemyColumns[j - 1][^1].OnDeath += DecreaseEnemies;
 					EnemyLeft++;
 

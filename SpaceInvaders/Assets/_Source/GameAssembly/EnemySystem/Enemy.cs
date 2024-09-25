@@ -2,6 +2,7 @@
 using HealthSystem;
 using PlayerSystem;
 using UnityEngine;
+using Utils;
 
 namespace EnemySystem
 {
@@ -10,6 +11,7 @@ namespace EnemySystem
 		[field: SerializeField] public Transform ShootPoint { get; private set; }
 		[field: SerializeField] public GameObject EnemyGFX { get; private set; }
 
+		[SerializeField] private LayerMask endGameLayer;
 		[SerializeField] private int scoreByDeath;
 		[SerializeField] private Collider2D currentCollider;
 		[SerializeField] private ParticleSystem destroyingParticles;
@@ -20,12 +22,20 @@ namespace EnemySystem
 		public int Health { get; private set; }
 
 		private PlayerScore _playerScore;
+		private PlayerHealth _playerHealth;
 
-		public void Init(PlayerScore playerScore)
+		public void Init(PlayerScore playerScore, PlayerHealth playerHealth)
 		{
 			_playerScore = playerScore;
+			_playerHealth = playerHealth;
 			
 			Health = maxHealth;
+		}
+
+		private void OnTriggerEnter2D(Collider2D other)
+		{
+			if (LayerService.CheckLayersEquality(other.gameObject.layer, endGameLayer))
+				_playerHealth.DecreaseHealth(3);
 		}
 
 		private void Die()
