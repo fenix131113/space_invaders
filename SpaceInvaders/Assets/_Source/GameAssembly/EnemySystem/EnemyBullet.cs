@@ -20,7 +20,7 @@ namespace EnemySystem
 			if(target.TryGetComponent(out IHealth health))
 				health.DecreaseHealth();
 			else
-				Debug.LogWarning($"Can't find IHealth component. Check {target.name} object!");
+				Debug.LogWarning($"Can't find IHealth component. Check \"{target.name}\" object!");
 			
 			gameObject.SetActive(false);
 		}
