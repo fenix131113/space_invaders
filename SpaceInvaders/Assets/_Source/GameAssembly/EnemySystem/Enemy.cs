@@ -1,4 +1,5 @@
-﻿using ShootingSystem;
+﻿using HealthSystem;
+using PlayerSystem;
 using UnityEngine;
 
 namespace EnemySystem
@@ -8,30 +9,38 @@ namespace EnemySystem
 		[field: SerializeField] public Transform ShootPoint { get; private set; }
 		[field: SerializeField] public GameObject EnemyGFX { get; private set; }
 
+		[SerializeField] private int scoreByDeath;
 		[SerializeField] private Collider2D currentCollider;
 		[SerializeField] private ParticleSystem destroyingParticles;
 		[SerializeField] private int maxHealth;
+		
+		public int Health { get; private set; }
 
-		private int _health;
+		private PlayerScore _playerScore;
 
-		public void Start()
+		public void Init(PlayerScore playerScore)
 		{
-			_health = maxHealth;
+			_playerScore = playerScore;
+			
+			Health = maxHealth;
 		}
 
 		private void Die()
 		{
 			destroyingParticles.Play();
 
+			_playerScore.AddScore((uint)scoreByDeath);
+			
 			currentCollider.enabled = false;
 			EnemyGFX.SetActive(false);
 		}
 
+
 		public void DecreaseHealth(int amount = 1)
 		{
-			_health = Mathf.Clamp(_health - amount, 0, maxHealth);
+			Health = Mathf.Clamp(Health - amount, 0, maxHealth);
 
-			if (_health == 0)
+			if (Health == 0)
 				Die();
 		}
 	}

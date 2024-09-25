@@ -1,7 +1,7 @@
-﻿using ShootingSystem;
+﻿using HealthSystem;
 using UnityEngine;
 
-namespace EnemySystem
+namespace ShootingSystem.Enemy
 {
 	public class EnemyBullet : ABullet
 	{

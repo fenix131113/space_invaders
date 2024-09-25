@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ShootPoint>k__BackingField: {fileID: 4154246884173517045}
   <EnemyGFX>k__BackingField: {fileID: 5513178724046928766}
+  scoreByDeath: 200
   currentCollider: {fileID: 4363853540002872372}
   destroyingParticles: {fileID: 4959203261773209280}
   maxHealth: 1

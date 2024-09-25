@@ -1,7 +1,7 @@
-﻿using ShootingSystem;
+﻿using HealthSystem;
 using UnityEngine;
 
-namespace PlayerSystem
+namespace ShootingSystem.Player
 {
 	public class PlayerBullet : ABullet
 	{

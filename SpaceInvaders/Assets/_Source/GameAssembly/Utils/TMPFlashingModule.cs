@@ -25,7 +25,7 @@ namespace Utils
 			_target = GetComponent<TMP_Text>();
 		}
 
-		private void Awake()
+		private void Start()
 		{
 			if (useTargetText)
 				Text = _target.text;

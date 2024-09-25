@@ -1,4 +1,18 @@
 {
-	"name": "GameAssembly.PlayerSystem",
-	"references":[ "GUID:444b9b206521cdf4eb47d2dd63b3b22c", "GUID:78094d88480b41038da72032ea6ac740" ]
+    "name": "GameAssembly.PlayerSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e24f51f06c71a7442b82dc81ca9b4f29",
+        "GUID:fe9933e25cf8d7145b27afa1043e5986",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

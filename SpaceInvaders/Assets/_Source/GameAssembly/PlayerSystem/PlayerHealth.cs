@@ -1,17 +1,22 @@
-﻿using ShootingSystem;
+﻿using System;
+using HealthSystem;
 using UnityEngine;
 
 namespace PlayerSystem
 {
 	public class PlayerHealth : MonoBehaviour, IHealth
 	{
-		private int _health = 3;
-		
+		public int Health { get; private set; } = 3;
+
+		public event Action OnHealthChanged;
+
 		public void DecreaseHealth(int amount = 1)
 		{
-			_health = Mathf.Clamp(_health - amount, 0, 3);
+			Health = Mathf.Clamp(Health - amount, 0, 3);
+
+			OnHealthChanged?.Invoke();
 			
-			if(_health == 0)
+			if (Health == 0)
 				Die();
 		}
 

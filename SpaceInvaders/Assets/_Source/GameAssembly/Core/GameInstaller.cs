@@ -14,6 +14,7 @@ namespace Core
 		[SerializeField] private PlayerMovement playerMovement;
 		[SerializeField] private AShooter playerShooter;
 		[SerializeField] private EnemySpawner enemySpawner;
+		[SerializeField] private PlayerHealth playerHealth;
 
 		[SerializeField] private PlayerSettings playerSettings;
 		[SerializeField] private EnemySpawnSettings enemySpawnSettings;
@@ -55,6 +56,15 @@ namespace Core
 
 			Container.Bind<AShooter>()
 				.FromInstance(playerShooter)
+				.AsSingle()
+				.NonLazy();
+
+			Container.BindInterfacesAndSelfTo<PlayerScore>()
+				.AsSingle()
+				.NonLazy();
+
+			Container.Bind<PlayerHealth>()
+				.FromInstance(playerHealth)
 				.AsSingle()
 				.NonLazy();
 		}

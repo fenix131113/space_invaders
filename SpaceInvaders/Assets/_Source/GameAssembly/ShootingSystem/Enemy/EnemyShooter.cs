@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using EnemySystem;
 using EnemySystem.Data;
-using ShootingSystem;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace EnemySystem
+namespace ShootingSystem.Enemy
 {
 	public class EnemyShooter : AShooter
 	{
@@ -44,7 +43,7 @@ namespace EnemySystem
 			if (_bullet.activeSelf)
 				return;
 
-			List<Enemy> selectedRaw = new();
+			List<EnemySystem.Enemy> selectedRaw = new();
 
 			foreach (var raw in _enemySpawner.EnemyRaws)
 			{

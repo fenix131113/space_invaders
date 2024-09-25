@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 803529501868199513}
   - component: {fileID: 6749895931004760325}
   - component: {fileID: 3516057268429247087}
+  - component: {fileID: 8699747217488276340}
   - component: {fileID: 7425051741633475055}
   m_Layer: 6
   m_Name: Player
@@ -146,6 +147,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4451234147487120637, guid: fef2eaf547202974a907366a19c3e51a, type: 3}
   shootPoint: {fileID: 2263550687652010282}
+--- !u!114 &8699747217488276340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771939067324693634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe719a81f3b403682e2b270fccacf7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &7425051741633475055
 BoxCollider2D:
   m_ObjectHideFlags: 0

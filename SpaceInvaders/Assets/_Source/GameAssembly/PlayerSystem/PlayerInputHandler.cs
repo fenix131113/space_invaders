@@ -1,4 +1,4 @@
-﻿using ShootingSystem;
+﻿using System;
 using UnityEngine;
 using Zenject;
 
@@ -7,13 +7,13 @@ namespace PlayerSystem
 	public class PlayerInputHandler : ITickable
 	{
 		private PlayerMovement _playerMovement;
-		private AShooter _playerShooter;
+
+		public event Action OnPlayerShoot; 
 
 		[Inject]
-		private void Construct(PlayerMovement playerMovement, AShooter playerShooter)
+		private void Construct(PlayerMovement playerMovement)
 		{
 			_playerMovement = playerMovement;
-			_playerShooter = playerShooter;
 		}
 
 		public void Tick()
@@ -31,7 +31,7 @@ namespace PlayerSystem
 		private void ShootInputHandler()
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
-				_playerShooter.Shoot();
+				OnPlayerShoot?.Invoke();
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using EnemySystem.Data;
+using PlayerSystem;
 using UnityEngine;
 using Zenject;
 
@@ -12,12 +13,14 @@ namespace EnemySystem
 		public List<List<Enemy>> EnemyRaws { get; private set; } = new();
 
 		private EnemySpawnSettings _spawnerSettings;
+		private PlayerScore _playerScore;
 		private Vector3 _startPosition;
 
 		[Inject]
-		public void Construct(EnemySpawnSettings spawnerSettings)
+		public void Construct(EnemySpawnSettings spawnerSettings, PlayerScore playerScore)
 		{
 			_spawnerSettings = spawnerSettings;
+			_playerScore = playerScore;
 		}
 
 		public void Awake()
@@ -39,6 +42,7 @@ namespace EnemySystem
 				{
 					EnemyRaws[i - 1].Add(Instantiate(_spawnerSettings.EnemyPrefab, spawnPosition, Quaternion.identity,
 						spawnParent));
+					EnemyRaws[i - 1][^1].Init(_playerScore);
 					spawnPosition.x += _spawnerSettings.EnemyPrefab.transform.localScale.x + _spawnerSettings.XSpacing;
 				}
 
