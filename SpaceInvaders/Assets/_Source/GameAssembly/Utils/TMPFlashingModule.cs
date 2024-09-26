@@ -38,7 +38,9 @@ namespace Utils
 		{
 			if (IsFlashing)
 			{
+#if UNITY_EDITOR
 				Debug.LogWarning("Flashing is using right now!");
+#endif
 				return;
 			}
 

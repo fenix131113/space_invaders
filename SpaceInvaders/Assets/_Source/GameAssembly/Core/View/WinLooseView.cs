@@ -10,6 +10,9 @@ namespace Core.View
 	{
 		[SerializeField] private TMP_Text infoLabel;
 		[SerializeField] private GameObject screenBlocker;
+		
+		private const string WinMessage = "You've won\nPress R to restart";
+		private const string LooseMessage = "You've lost\nPress R to restart";
 
 		private PlayerHealth _playerHealth;
 		private EnemySpawner _enemySpawner;
@@ -28,7 +31,7 @@ namespace Core.View
 
 		private void Loose()
 		{
-			infoLabel.text = "You've lost\nPress R to restart";
+			infoLabel.text = LooseMessage;
 			screenBlocker.SetActive(true);
 		}
 
@@ -37,7 +40,7 @@ namespace Core.View
 			if(_enemySpawner.EnemyLeft > 0)
 				return;
 			
-			infoLabel.text = "You've won\nPress R to restart";
+			infoLabel.text = WinMessage;
 			screenBlocker.SetActive(true);	
 		}
 		

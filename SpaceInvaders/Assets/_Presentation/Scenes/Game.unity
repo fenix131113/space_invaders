@@ -1367,8 +1367,20 @@ MonoBehaviour:
   playerShooter: {fileID: 483826675}
   enemySpawner: {fileID: 1593777974}
   playerHealth: {fileID: 1324612411}
+  inputAction: {fileID: 1427774502}
   playerSettings: {fileID: 11400000, guid: eccf4773a8b20a74da32f87ec067a66b, type: 2}
   enemySpawnSettings: {fileID: 11400000, guid: 90e93e1b226f1d444b8d37e1696e688e, type: 2}
+--- !u!114 &1427774502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4461213141427517462, guid: ae6ae893bb0ff73438a62eb560c05310, type: 3}
+  m_PrefabInstance: {fileID: 8336315090269325869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1562591635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,74 +1460,6 @@ MonoBehaviour:
   speed: 1.5
   downMoveInterval: 5
   downMoveLenght: 0.3
---- !u!1 &1582880612
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1582880615}
-  - component: {fileID: 1582880614}
-  - component: {fileID: 1582880613}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1582880613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582880612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1582880614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582880612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1582880615
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582880612}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593777972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1472,6 @@ GameObject:
   - component: {fileID: 1593777974}
   - component: {fileID: 1593777975}
   - component: {fileID: 1593777976}
-  - component: {fileID: 1593777977}
   m_Layer: 0
   m_Name: ----GENERAL----
   m_TagString: Untagged
@@ -1595,18 +1538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoLabel: {fileID: 624496472}
   screenBlocker: {fileID: 1294374653}
---- !u!114 &1593777977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593777972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a6cbe0953f4b0bacbcc4cd03e0e78a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1888946437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,4 +1742,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 1593777973}
   - {fileID: 1888946438}
-  - {fileID: 1582880615}

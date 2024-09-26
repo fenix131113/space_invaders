@@ -1,21 +1,14 @@
 ﻿using System;
 using UnityEngine;
-using Zenject;
 
 namespace PlayerSystem
 {
-	public class PlayerScore : IInitializable
-
+	public class PlayerScore
 	{
 		public int Score { get; set; }
 		public int HighScore { get; set; }
 
 		public event Action OnScoreChanged;
-
-		public void Initialize()
-		{
-			LoadHighScore();
-		}
 		
 		public void AddScore(uint score)
 		{
@@ -35,10 +28,9 @@ namespace PlayerSystem
 			PlayerPrefs.SetInt("HighScore", HighScore);
 		}
 
-		private void LoadHighScore()
+		public void LoadData(int highScore)
 		{
-			if (PlayerPrefs.HasKey("HighScore"))
-				HighScore = PlayerPrefs.GetInt("HighScore");
+			HighScore = highScore;
 			
 			OnScoreChanged?.Invoke();
 		}

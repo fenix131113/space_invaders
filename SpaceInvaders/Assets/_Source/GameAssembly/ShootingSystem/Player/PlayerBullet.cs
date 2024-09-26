@@ -32,8 +32,10 @@ namespace ShootingSystem.Player
 			
 			if (target.TryGetComponent(out IHealth health))
 				health.DecreaseHealth();
+#if  UNITY_EDITOR
 			else
-				Debug.LogWarning($"Can't find IHealth component. Check {target.name} object!");
+				Debug.LogWarning($"Can't find IHealth component. Check {target.name} object!");		
+#endif
 
 			gameObject.SetActive(false);
 		}
