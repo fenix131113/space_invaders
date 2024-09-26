@@ -10,16 +10,15 @@ namespace PlayerSystem
 	{
 		private readonly PlayerMovement _playerMovement;
 		private readonly GameRestart _gameRestart;
-		private readonly PlayerInput _inputAction;
+		private Controls _inputControls;
 
 		public event Action OnPlayerShoot;
 
 		[Inject]
-		private PlayerInputHandler(PlayerMovement playerMovement, GameRestart gameRestart, PlayerInput inputAction)
+		private PlayerInputHandler(PlayerMovement playerMovement, GameRestart gameRestart)
 		{
 			_playerMovement = playerMovement;
 			_gameRestart = gameRestart;
-			_inputAction = inputAction;
 		}
 
 		~PlayerInputHandler() => Expose();
@@ -31,19 +30,25 @@ namespace PlayerSystem
 
 		public void Initialize()
 		{
+			_inputControls = new Controls();
+			
 			Bind();
 		}
 		
 		private void Bind()
 		{
-			_inputAction.actions.FindAction("Restart").started += RestartInputHandler;
-			_inputAction.actions.FindAction("Shoot").started += ShootInputHandler;
+			_inputControls.Default.Restart.started += RestartInputHandler;
+			_inputControls.Default.Shoot.started += ShootInputHandler;
+			
+			_inputControls.Enable();
 		}
 
 		private void Expose()
 		{
-			_inputAction.actions.FindAction("Restart").started -= RestartInputHandler;
-			_inputAction.actions.FindAction("Shoot").started -= ShootInputHandler;
+			_inputControls.Default.Restart.started -= RestartInputHandler;
+			_inputControls.Default.Shoot.started -= ShootInputHandler;
+			
+			_inputControls.Disable();
 		}
 
 		private void RestartInputHandler(InputAction.CallbackContext ctx)
@@ -53,7 +58,7 @@ namespace PlayerSystem
 
 		private void MoveInputHandler()
 		{
-			var horizontalMove = _inputAction.actions.FindAction("Horizontal").ReadValue<float>();
+			var horizontalMove = _inputControls.Default.Horizontal.ReadValue<float>();
 			_playerMovement.MovePlayer(new Vector2(horizontalMove, 0));
 		}
 

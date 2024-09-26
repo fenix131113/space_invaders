@@ -17,15 +17,9 @@ namespace PlayerSystem
 			if (Score > HighScore)
 			{
 				HighScore = Score;
-				SaveHighScore();
 			}
 
 			OnScoreChanged?.Invoke();
-		}
-
-		private void SaveHighScore()
-		{
-			PlayerPrefs.SetInt("HighScore", HighScore);
 		}
 
 		public void LoadData(int highScore)

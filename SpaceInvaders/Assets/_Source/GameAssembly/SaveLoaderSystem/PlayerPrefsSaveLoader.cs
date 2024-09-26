@@ -6,6 +6,7 @@ namespace SaveLoaderSystem
 {
 	public class PlayerPrefsSaveLoader : ISaveLoader, IInitializable
 	{
+		private const string HighScoreSaveKey = "HighScore";
 		private readonly PlayerScore _playerPlayerScore;
 
 		[Inject]
@@ -21,7 +22,7 @@ namespace SaveLoaderSystem
 
 		public void Save()
 		{
-			PlayerPrefs.SetInt("HighScore", _playerPlayerScore.HighScore);
+			PlayerPrefs.SetInt(HighScoreSaveKey, _playerPlayerScore.HighScore);
 		}
 
 		public bool TryLoad()
@@ -34,9 +35,9 @@ namespace SaveLoaderSystem
 
 		private static bool TryGetHighScore(out int highScore)
 		{
-			if (PlayerPrefs.HasKey("HighScore"))
+			if (PlayerPrefs.HasKey(HighScoreSaveKey))
 			{
-				highScore = PlayerPrefs.GetInt("HighScore");
+				highScore = PlayerPrefs.GetInt(HighScoreSaveKey);
 				return true;
 			}
 

@@ -60,11 +60,6 @@ namespace Core
 		
 		private void BindPlayer()
 		{
-			Container.Bind<PlayerInput>()
-				.FromInstance(inputAction)
-				.AsSingle()
-				.NonLazy();
-			
 			Container.BindInterfacesAndSelfTo<PlayerInputHandler>()
 				.AsSingle()
 				.NonLazy();
